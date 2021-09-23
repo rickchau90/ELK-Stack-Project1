@@ -1,6 +1,6 @@
 # ELK-Stack-Project1
 UCI Cybersecurity boot camp ELK Stack project
-![TODO: Update the path with the name of your diagram](Photos/Project1_Diagram.PNG) Project1_Diagram.PNG
+![TODO: Update the path with the name of your diagram](Photos/Project1_Diagram.PNG) 
 
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the __project1-playbook.zip___ file may be used to install only certain pieces of it, such as Filebeat.
