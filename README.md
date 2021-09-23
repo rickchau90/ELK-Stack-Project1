@@ -54,13 +54,12 @@ Machines within the network can only be accessed by _____.
 - _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_ Only the Jumpbox/Ansible server has access to the ELK VM
 IP Address: 172.31.88.180
 A summary of the access policies in place can be found in the table below.
-| Name            | Publicly Accessible | Allowed IP addresses |
+| Name            | Publicly accessible | Allowed IP addresses |
 |-----------------|---------------------|----------------------|
 | Jumpbox/Ansible | no                  | 45.51.19.33          |
 | Webserver 1     | yes                 | 172.31.88.180        |
 | Webserver 2     | yes                 | 172.31.88.180        |
-| ELK Server      | no                  | 172.31.88.180        |
-
+| ELK server      | no                  | 172.31.88.180        |
 
 ### Elk Configuration
 
