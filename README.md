@@ -4,7 +4,6 @@
 UCI Cybersecurity boot camp ELK Stack project
 (Photos/Project1_Diagram.PNG) https://github.com/rickchau90/ELK-Stack-Project1/blob/main/Project1_Diagram.PNG
 
-
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the project1-playbook.zip file may be used to install only certain pieces of it, such as Filebeat.
 
   - https://drive.google.com/drive/folders/1l3takQvVMBe5_HnRiC0JpQBCV1VJ3mvV?usp=sharing
@@ -14,7 +13,6 @@ This document contains the following details:
   - Beats in Use
   - Machines Being Monitored
 - How to Use the Ansible Build
-
 
 ### Description of the Topology
 
@@ -93,7 +91,6 @@ filebeat
 
 These Beats allow us to collect the following information from each machine:
 
-
 Metricbeat collects different metrics on services for example Docker metrics fetches metrics from your docker containers. 
 Filebeat collects logs from different log files for example Apache logs collects access and error logos created by the apache HTTP server
 
@@ -105,12 +102,9 @@ SSH into the control node and follow the steps below:
 - Update the __config file___ file to include the ELK server IP address
 - Run the playbook, and navigate to the ELK GUI to check that the installation worked as expected. Navigate to system logs and docker container metrics and click on check data to see if the server is working properly
 
-
 Playbook files list out a series of actions whereas configuration files are used to indicate services should be created. Copy the playbook files into the ansible server because the ansible server also holds all of the configuration files that are used when running a playbook.
 In order to make ansible run a playbook on a specific machine, update the playbook file to specify which machines to run the playbook on. This is done by changing hosts to match the correct group and remote_user to match the user id of that machine
-
 Navigate to your ELK public IP on its open port (in this case port 5601) to see if the the app is running.
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 Some important docker commands
 sudo docker start (start the container)
 sudo docker attach (connect to the container)
