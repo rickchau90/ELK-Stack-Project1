@@ -21,11 +21,11 @@ This document contains the following details:
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
 Load balancing ensures that the application will be highly available, in addition to restricting traffic to the network.
- What aspect of security do load balancers protect? What is the advantage of a jump box? Load balancers ensure that access to servers are protected by managing the amount of traffic going to servers so that one server isn’t overwhelmed by traffic and slowed down.  The advantage of a jumpbox is that administrators can make changes to webservers remotely on another secure domain that doesn’t have open connections to the internet.
+Load balancers ensure that access to servers are protected by managing the amount of traffic going to servers so that one server isn’t overwhelmed by traffic and slowed down. The advantage of a jumpbox is that administrators can make changes to webservers remotely on another secure domain that doesn’t have open connections to the internet.
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the metrics and system logs.
- What does Filebeat watch for?_ Filebeat collects and watches information on log files including changes made to files and when they were changed. 
- What does Metricbeat record?_ Metricbeat records metric data for different services. An example of what Metricbeat might record is how frequently a service is used. 
+Filebeat collects and watches information on log files including changes made to files and when they were changed. 
+Metricbeat records metric data for different services. An example of what Metricbeat might record is how frequently a service is used. 
 
 The configuration details of each machine may be found below.
 Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
@@ -53,7 +53,7 @@ SSH: 172.31.88.180/32, 45.51.19.33/32
 
 
 Machines within the network can only be accessed by the ansible server.
-: Which machine did you allow to access your ELK VM? What was its IP address?_ Only the Jumpbox/Ansible server has access to the ELK VM
+The Ansible server allows for remote access to the webservers to make any changes to configuration. 
 IP Address: 172.31.88.180
 A summary of the access policies in place can be found in the table below.
 
@@ -66,11 +66,9 @@ A summary of the access policies in place can be found in the table below.
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-What is the main advantage of automating configuration with Ansible?_
+Ansible was used to automate configuration of the ELK machine. 
 The main advantage of automating configuration with Ansible is scalability because automation allows us to efficiently create identical servers to control data traffic.
 The playbook implements the following tasks:
- In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
 - Install these services onto all servers under elk group listed in host file
 - install docker.io
 - increase virtual memory 
@@ -78,8 +76,7 @@ The playbook implements the following tasks:
 - download and launch a docker web container
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
-
-
+![Project1-dockerps (2)](https://user-images.githubusercontent.com/84049611/134743990-4a68475b-8107-4b93-bbf3-a48bee2089ec.PNG)
 (Images/docker_ps_output.png) https://github.com/rickchau90/ELK-Stack-Project1/blob/main/Project1-dockerps%20(2).PNG
 
 ### Target Machines & Beats
@@ -95,7 +92,7 @@ Metricbeat
 filebeat
 
 These Beats allow us to collect the following information from each machine:
-In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+
 
 Metricbeat collects different metrics on services for example Docker metrics fetches metrics from your docker containers. 
 Filebeat collects logs from different log files for example Apache logs collects access and error logos created by the apache HTTP server
@@ -108,9 +105,18 @@ SSH into the control node and follow the steps below:
 - Update the __config file___ file to include the ELK server IP address
 - Run the playbook, and navigate to the ELK GUI to check that the installation worked as expected. Navigate to system logs and docker container metrics and click on check data to see if the server is working properly
 
-Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_ playbook files list out a series of actions whereas configuration files are used to indicate services should be created.
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_ update the playbook file to specify which machines to run the playbook on. This is done by changing hosts to match the correct group and remote_user to match the user id of that machine
-- _Which URL do you navigate to in order to check that the ELK server is running?
+
+Playbook files list out a series of actions whereas configuration files are used to indicate services should be created. Copy the playbook files into the ansible server because the ansible server also holds all of the configuration files that are used when running a playbook.
+In order to make ansible run a playbook on a specific machine, update the playbook file to specify which machines to run the playbook on. This is done by changing hosts to match the correct group and remote_user to match the user id of that machine
+
 Navigate to your ELK public IP on its open port (in this case port 5601) to see if the the app is running.
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+Some important docker commands
+sudo docker start (start the container)
+sudo docker attach (connect to the container)
+docker container list -a (shows list of containers on the machine)
+sudo docker cp KEYFILE.pem <container name>:/destination path (copies key to container to folder destination)
+
+Some important ansible commands
+  ansible -m ping all --key-file KEYFILE.PEM (pings all servers created with KEYFILE.PEM)
+  ansible-playbook -i hosts PLAYBOOK.YML --key-file KEYFILE.pem (runs playbook file to all servers with KEYFILE.pem)
