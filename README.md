@@ -43,12 +43,16 @@ The machines on the internal network are not exposed to the public Internet.
 Only  webserver 1 and 2 machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 
 ICMP- all IPv4
-Port 5044: all IPv4
-Port 9200: all IPv4
-Port 5601: all IPv4
-Port 80: all IPv4
-SSH: 172.31.88.180/32, 45.51.19.33/32
 
+Port 5044: all IPv4
+
+Port 9200: all IPv4
+
+Port 5601: all IPv4
+
+Port 80: all IPv4
+
+SSH: 172.31.88.180/32, 45.51.19.33/32
 
 Machines within the network can only be accessed by the ansible server.
 The Ansible server allows for remote access to the webservers to make any changes to configuration. 
@@ -105,12 +109,20 @@ SSH into the control node and follow the steps below:
 Playbook files list out a series of actions whereas configuration files are used to indicate services should be created. Copy the playbook files into the ansible server because the ansible server also holds all of the configuration files that are used when running a playbook.
 In order to make ansible run a playbook on a specific machine, update the playbook file to specify which machines to run the playbook on. This is done by changing hosts to match the correct group and remote_user to match the user id of that machine
 Navigate to your ELK public IP on its open port (in this case port 5601) to see if the the app is running.
+
 Some important docker commands
+
 sudo docker start (start the container)
+
 sudo docker attach (connect to the container)
+
 docker container list -a (shows list of containers on the machine)
+
 sudo docker cp KEYFILE.pem <container name>:/destination path (copies key to container to folder destination)
+  
 
 Some important ansible commands
+  
   ansible -m ping all --key-file KEYFILE.PEM (pings all servers created with KEYFILE.PEM)
+  
   ansible-playbook -i hosts PLAYBOOK.YML --key-file KEYFILE.pem (runs playbook file to all servers with KEYFILE.pem)
