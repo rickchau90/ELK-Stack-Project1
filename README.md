@@ -1,3 +1,5 @@
+![image](https://user-images.githubusercontent.com/84049611/134743220-c3780a87-702d-493e-9fe9-3f563817bfcf.png)
+
 # ELK-Stack-Project1
 UCI Cybersecurity boot camp ELK Stack project
 (Photos/Project1_Diagram.PNG) https://github.com/rickchau90/ELK-Stack-Project1/blob/main/Project1_Diagram.PNG
