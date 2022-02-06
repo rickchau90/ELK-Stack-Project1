@@ -38,7 +38,7 @@ Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_table
 
 ### Access Policies
 
-The machines on the internal network are not exposed to the public Internet. 
+The ELK server and jumpbox server are on the internal network and are not exposed to the public Internet. For security reasons, connection to these servers are only allowed through SSH. 
 
 Only  webserver 1 and 2 machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 
