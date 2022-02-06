@@ -4,7 +4,7 @@
 UCI Cybersecurity boot camp ELK Stack project
 (Photos/Project1_Diagram.PNG) https://github.com/rickchau90/ELK-Stack-Project1/blob/main/Project1_Diagram.PNG
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the project1-playbook.zip file may be used to install only certain pieces of it, such as Filebeat.
+These files have been tested and used to generate a live ELK deployment on AWS cloud. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the project1-playbook.zip file may be used to install only certain pieces of it, such as Filebeat.
 
   - https://drive.google.com/drive/folders/1l3takQvVMBe5_HnRiC0JpQBCV1VJ3mvV?usp=sharing
 This document contains the following details:
@@ -16,10 +16,10 @@ This document contains the following details:
 
 ### Description of the Topology
 
-The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
+The main purpose of this network is to create a load-balanced and monitored HTTPd/Apache2 application server.
 
-Load balancing ensures that the application will be highly available, in addition to restricting traffic to the network.
-Load balancers ensure that access to servers are protected by managing the amount of traffic going to servers so that one server isn’t overwhelmed by traffic and slowed down. The advantage of a jumpbox is that administrators can make changes to webservers remotely on another secure domain that doesn’t have open connections to the internet.
+Load balancing ensures that the application will be highly available, in addition to maintaining traffic flow going to servers.
+Load balancers improve performance by managing traffic flow going into each server to make sure they all receive the same or similar workload. This scenerio is considered an active/active load balancing. The jumpbox server acts as a DMZ (demilitarized zone) which is an intermediary between the public internet and internal network. The jumpbox server makes it possible to make remote changes to the internal network without having to make a direct connection to the internal network via the internet.
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the metrics and system logs.
 Filebeat collects and watches information on log files including changes made to files and when they were changed. 
